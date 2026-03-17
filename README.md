@@ -37,11 +37,12 @@ git clone https://github.com/amyy45/stegoshield-devops.git
 cd stegoshield-devops
 
 # 2. Configure environment
-cp backend/.env.example backend/.env
-# Fill in your values in backend/.env
+cp .env.example .env                      # Firebase build args
+cp backend/.env.example backend/.env      # Backend secrets
+# Fill in your values in both .env files
 
 # 3. Build and run
-docker compose up -d
+docker compose up --build
 
 # 4. Verify everything is healthy
 bash scripts/health_check.sh
@@ -74,6 +75,7 @@ stegoshield-devops/
 ├── backend/          # Flask API, ML models, database
 ├── frontend/         # React app
 ├── scripts/          # Setup and health check scripts
+├── .env.example      # Firebase build args template
 └── CONTRIBUTING.md   # Branch strategy and commit conventions
 ```
 
