@@ -1,21 +1,24 @@
 # Python
-venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
 
 # Environment
-.env
-.env.*
+backend/.env
+backend/.env.*
 
 # Models (too large)
-models/*.pth
+backend/models/*.pth
 
 # Logs
 *.log
 logs/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
 
 # OS
 .DS_Store
@@ -24,10 +27,3 @@ Thumbs.db
 # Git
 .git
 .gitignore
-
-# Docker
-Dockerfile
-.dockerignore
-
-# Tests
-tests/
