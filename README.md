@@ -4,8 +4,8 @@
 > an AI-powered steganography detection platform for images, audio, and video.
 
 ## Project Overview
-StegoShield detects hidden payloads inside images, audio, and video 
-files using trained deep learning models. This repo contains the full 
+StegoShield detects hidden payloads inside images, audio, and video
+files using trained deep learning models. This repo contains the full
 DevOps infrastructure built around it.
 
 ## Tech Stack
@@ -16,7 +16,7 @@ DevOps infrastructure built around it.
 - **Auth:** Firebase
 - **ML Models:** PyTorch (.pth) — image, audio, video detection
 
-### DevOps (building over 16 weeks)
+### Infrastructure
 - **Containerisation:** Docker, Docker Compose
 - **CI/CD:** GitHub Actions
 - **Cloud:** AWS (EC2, RDS, S3, ECR, EKS)
@@ -26,15 +26,38 @@ DevOps infrastructure built around it.
 - **Monitoring:** Prometheus, Grafana, Loki
 
 ## Architecture
-> Full architecture diagram coming in Week 7
+> Full architecture diagram coming soon
 
 ## Quick Start
-> Setup script coming in Day 2
+```bash
+# 1. Clone the repo
+git clone https://github.com/amyy45/stegoshield-devops.git
+cd stegoshield-devops
 
-## Progress
-| Month | Topic | Status |
-|-------|-------|--------|
-| 1 | Linux, Git, Docker, CI/CD | 🔄 In Progress |
-| 2 | AWS, Terraform, CD Pipeline | ⏳ Upcoming |
-| 3 | Kubernetes, Helm, Monitoring | ⏳ Upcoming |
-| 4 | DevSecOps, GitOps, Job Hunt | ⏳ Upcoming |
+# 2. Run setup
+bash scripts/setup.sh
+
+# 3. Configure environment
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
+# Fill in your values in both .env files
+
+# 4. Start the backend
+cd backend && source venv/bin/activate && python app.py
+
+# 5. Verify everything is healthy
+bash scripts/health_check.sh
+```
+
+## Project Structure
+```
+stegoshield-devops/
+├── backend/          # Flask API, ML models, database
+├── frontend/         # React app
+├── scripts/          # Setup and health check scripts
+└── CONTRIBUTING.md   # Branch strategy and commit conventions
+```
+
+## Contributing
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for branch strategy, commit
+message format, and development workflow.
