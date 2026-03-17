@@ -69,10 +69,6 @@ CORS(app, supports_credentials=True, origins=[
     "https://stegoshield-3ius.onrender.com"
 ])
 
-
-
-app.secret_key = "your-secret-key"  # Replace with a strong secret key
-
 cred = credentials.Certificate("firebase_config.json")
 firebase_admin.initialize_app(cred)
 
@@ -353,8 +349,6 @@ def login():
     try:
         conn = get_connection()
         cursor = conn.cursor()
-
-
 
         # Fetch name AND avatar along with password
         cursor.execute("SELECT id, name, password, avatar FROM users WHERE email = %s", (email,))

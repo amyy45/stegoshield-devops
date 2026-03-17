@@ -17,3 +17,17 @@ logs/*.log
 
 # OS
 .DS_Store
+
+# Env files (never commit real credentials)
+.env
+backend/.env
+
+# Virtual environment
+backend/venv/
+
+# Frontend build output
+frontend/dist/
+frontend/node_modules/
+
+# backend config files
+backend/firebase_config.json

@@ -11,7 +11,7 @@ import random
 class ImageStegoCNN(nn.Module):
     def __init__(self):
         super(ImageStegoCNN, self).__init__()
-        self.model = models.resnet18(weights=ResNet18_Weights.DEFAULT)  # ✅ Fixed pretrained weights
+        self.model = models.resnet18(weights=ResNet18_Weights.DEFAULT)  
         self.model.fc = nn.Linear(self.model.fc.in_features, 2)
 
     def forward(self, x):
@@ -55,8 +55,8 @@ class AudioStegoCNN(nn.Module):
 class VideoStegoModel(nn.Module):
     def __init__(self):
         super(VideoStegoModel, self).__init__()
-        self.cnn = models.efficientnet_v2_s(weights=EfficientNet_V2_S_Weights.DEFAULT)  # ✅ Fixed weights
-        self.cnn.classifier = nn.Sequential(  # ✅ Fixed classifier layer
+        self.cnn = models.efficientnet_v2_s(weights=EfficientNet_V2_S_Weights.DEFAULT)  
+        self.cnn.classifier = nn.Sequential( 
             nn.Linear(self.cnn.classifier[1].in_features, 128),
             nn.ReLU()
         )
