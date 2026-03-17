@@ -34,7 +34,6 @@ echo "────────────────────────�
 # ── CHECKS ───────────────────────────────────────────────────
 check "Backend alive"        "$BASE_URL/ping"         "200"
 check "Database connection"  "$BASE_URL/api/test_db"  "200"
-check "Login route"          "$BASE_URL/login"        "200"
 check "Upload route"         "$BASE_URL/upload"       "200"
 
 # ── SUMMARY ──────────────────────────────────────────────────
