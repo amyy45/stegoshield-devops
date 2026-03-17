@@ -29,6 +29,25 @@ DevOps infrastructure built around it.
 > Full architecture diagram coming soon
 
 ## Quick Start
+
+### Option 1: Run with Docker (recommended)
+```bash
+# 1. Clone the repo
+git clone https://github.com/amyy45/stegoshield-devops.git
+cd stegoshield-devops
+
+# 2. Configure environment
+cp backend/.env.example backend/.env
+# Fill in your values in backend/.env
+
+# 3. Build and run
+docker compose up -d
+
+# 4. Verify everything is healthy
+bash scripts/health_check.sh
+```
+
+### Option 2: Run locally
 ```bash
 # 1. Clone the repo
 git clone https://github.com/amyy45/stegoshield-devops.git
