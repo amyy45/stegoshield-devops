@@ -4,7 +4,7 @@ FROM node:20-slim AS frontend-builder
 WORKDIR /frontend
 
 COPY frontend/package*.json ./
-RUN npm install
+RUN npm ci --only=production=false
 
 COPY frontend/ .
 
@@ -31,10 +31,9 @@ FROM python:3.11-slim AS python-builder
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     libpq-dev \
-    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt .
@@ -46,10 +45,11 @@ FROM python:3.11-slim AS runtime
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     ffmpeg \
     curl \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy Python packages
@@ -59,7 +59,7 @@ COPY --from=python-builder /usr/local/bin /usr/local/bin
 # Copy backend code
 COPY backend/ .
 
-# Copy built frontend into expected location
+# Copy built frontend
 COPY --from=frontend-builder /frontend/dist /frontend/dist
 
 # Don't run as root

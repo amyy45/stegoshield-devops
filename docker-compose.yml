@@ -12,6 +12,8 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
+    networks:
+      - stegoshield-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U sneha -d stegoshield"]
       interval: 10s
@@ -40,13 +42,23 @@ services:
       db:
         condition: service_healthy
     restart: unless-stopped
+    networks:
+      - stegoshield-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/ping"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 10s
+      start_period: 15s
 
 volumes:
   postgres_data:
     driver: local
+
+networks:
+  stegoshield-network:
+    driver: bridge
