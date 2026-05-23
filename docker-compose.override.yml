@@ -1,0 +1,14 @@
+services:
+  backend:
+    volumes:
+      - ./backend:/app
+    environment:
+      FLASK_ENV: development
+      FLASK_DEBUG: "1"
+    command: python app.py
+    networks:
+      - stegoshield-network
+
+networks:
+  stegoshield-network:
+    driver: bridge

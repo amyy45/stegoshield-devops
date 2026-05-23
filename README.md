@@ -48,7 +48,13 @@ docker compose up --build
 bash scripts/health_check.sh
 ```
 
-### Option 2: Run locally
+### Option 2: Run with Docker Compose directly
+```bash
+docker compose up --build
+bash scripts/health_check.sh
+```
+
+### Option 3: Run locally
 ```bash
 # 1. Clone the repo
 git clone https://github.com/amyy45/stegoshield-devops.git
@@ -66,8 +72,24 @@ cp frontend/.env.example frontend/.env
 cd backend && source venv/bin/activate && python app.py
 
 # 5. Verify everything is healthy
-bash scripts/health_check.sh
+make health
 ```
+
+## Make Commands
+
+| Command | Description |
+|---------|-------------|
+| `make up` | Start all services in background |
+| `make down` | Stop all services |
+| `make build` | Rebuild images from scratch |
+| `make logs` | Stream logs from all services |
+| `make logs-backend` | Stream backend logs only |
+| `make health` | Run health check against running stack |
+| `make shell-backend` | Open bash shell inside backend container |
+| `make shell-db` | Open psql inside database container |
+| `make restart` | Stop and restart all services |
+| `make ps` | Show running containers and status |
+| `make clean` | Stop services and remove volumes |
 
 ## Project Structure
 ```
