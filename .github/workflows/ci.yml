@@ -54,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install flask flask-cors python-dotenv pytest pytest-flask werkzeug
+          pip install flask flask-cors python-dotenv pytest pytest-flask werkzeug firebase-admin
 
       - name: Run pytest
         run: |
