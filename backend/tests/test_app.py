@@ -10,6 +10,13 @@ sys.modules['torch'] = MagicMock()
 sys.modules['torchvision'] = MagicMock()
 sys.modules['torchaudio'] = MagicMock()
 sys.modules['model'] = MagicMock()
+sys.modules['psycopg2'] = MagicMock()
+sys.modules['psycopg2.errors'] = MagicMock()
+sys.modules['cloudinary'] = MagicMock()
+sys.modules['cloudinary.uploader'] = MagicMock()
+sys.modules['cloudinary.utils'] = MagicMock()
+sys.modules['cloudinary_config'] = MagicMock()
+sys.modules['waitress'] = MagicMock()
 
 with patch('firebase_admin.initialize_app'), \
      patch('firebase_admin.credentials.Certificate'), \
